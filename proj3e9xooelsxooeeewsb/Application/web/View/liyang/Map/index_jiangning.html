@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           兰州
+        </title>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <link href="{{assert web/jiangning-demo/lib/leaflet/leaflet.css}}" rel="stylesheet"/>
+        <link href="{{assert web/jiangning-demo/css/index.css}}" rel="stylesheet"/>
+        <script src="{{assert web/jiangning-demo/lib/jquery.js}}">
+        </script>
+        <script src="{{assert web/jiangning-demo/lib/leaflet/leaflet-src.js}}">
+        </script>
+        <script src="{{assert web/jiangning-demo/lib/layer.wmts-src.js}}">
+        </script>
+        <script src="{{assert web/jiangning-demo/lib/echarts.min.js}}">
+        </script>
+         <script src="{{assert web/jiangning-demo/lib/HeatLayer.js}}">
+        </script>
+         <script src="{{assert web/jiangning-demo/lib/d3.v3.min.js}}">
+        </script>
+         <script src="{{assert web/jiangning-demo/lib/hexbin.js}}">
+        </script>
+        <!--   <script src="lib/HexbinLayer.js">
+            </script> -->
+        <script src="{{assert web/jiangning-demo/lib/leaflet-d3.js}}">
+                </script> 
+        <script src="{{assert web/jiangning-demo/data/jiedao.js}}">
+        </script>
+        <script src="{{assert web/jiangning-demo/data/shequ.js}}">
+        </script>
+    </head>
+</html>
+<body>
+    <div class="leftside">
+        <ul class="panel" style="">
+            <li style="height: 100px">
+                <p id="allpeop">
+                   兰州市总人口
+                    <a class="allapolygon">
+                        √
+                    </a>
+                </p>
+                <div>
+                兰州市总人口数:<h>370.55</h>万人
+                </div>
+            </li>
+            <li style="height: 340px">
+                <p id="dibao">
+                    经济适用房统计
+                    <a style="display: none;" class="apiechart">
+                        √
+                    </a>
+                </p>
+                <div id="zftxtu" style="height: 300px;width: 300px;margin: 0 10px ">
+                </div>
+            </li>
+            <li style="height: 340px">
+                <p id="jun">
+                    退休职工统计
+                    <a style="display: none;" class="junapolygon">
+                        √
+                    </a>
+                </p>
+                <div id="junren" style="height: 300px;width:300px;margin: 0 10px ">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="rightside">
+        <ul class="rightpanel" style="">
+            <li style="height: 340px">
+                <p id="dangan">
+                   房产建档统计
+                    <a style="display: none;">
+                        √
+                    </a>
+                </p>
+                <div id="jiandang" style="height: 800px;width:300px;margin: 0 10px ">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="mapid">
+    </div>
+    <script src="{{assert web/jiangning-demo/js/index.js}}">
+    </script>
+</body>

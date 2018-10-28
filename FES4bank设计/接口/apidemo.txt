@@ -1,0 +1,39 @@
+/**
+   * 验证请求
+   */
+  private function authorization(){
+    $token = $_SERVER['HTTP_CLIENT_TOKEN'];
+
+    $authorization = md5(substr(md5($token), 8, 24).$token);	// 验证算法
+    if($authorization != $_SERVER['HTTP_CLIENT_CODE']){
+      //验证失败，输出错误信息给客户端
+      $this->outPut($status = 1);
+    }
+  }
+  
+  
+  // 查询 不动产信息
+  $arr = [
+				"system"=>[		
+				"version"=>"V1",							// 暂时不用
+				"from"=> "web",								// 暂时不用
+				"sign"=> "a101f236d049b9ad80e012113e59f9bc", // 暂时不用
+				"time"=> "1445482366"						 // 暂时不用
+				],
+				"method"=> "1-1",							// 暂时不用
+				"params"=> [
+					"username" => "test001@163.com",		// 暂时不用
+					"password" => "123456",					// 暂时不用
+					"nickname" => "我是测试账号1"			// 暂时不用
+				],
+				"data" =>[
+					"list" =>[
+						"bdczh" => "兰房字第001号",
+						"bdcdyh" => "620103001001GB00224F00020079",
+						"qlr" => "张三",
+						"qlrzjh" => "620111111111111111"
+					],
+					"totalCount" => 1,
+					"limit" => 10
+				]
+		];

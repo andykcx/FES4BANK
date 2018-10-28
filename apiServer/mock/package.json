@@ -1,0 +1,7 @@
+# /mock/package.json
+
+{
+  "scripts": {
+    "mock": "json-server db.js"
+  }
+}

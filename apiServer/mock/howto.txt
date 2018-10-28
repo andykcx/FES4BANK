@@ -1,0 +1,6 @@
+start:
+	json-server --watch db.json
+
+start a js:
+
+	json-server index.js

@@ -1,0 +1,63 @@
+{
+    "msg": "",
+    "code": 0,
+    "data": [{
+                "id": "root",
+                "name": "根目录",
+                "pId":"0",
+                "children": []
+            },
+			{
+                "id": "djsqs",
+                "name": "登记申请书(原件)",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "sqrzj",
+                "name": "申请人(代理人)身份证(原件)",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "dyht",
+                "name": "抵押合同(含抵押物清单)",
+				"pId":"root",
+                "children": []
+            },
+            {
+                "id": "jkht",
+                "name": "借款合同，授信合同(原件)",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "sqwts",
+                "name": "授权委托书",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "gzs",
+                "name": "公证书",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "zxh",
+                "name": "知晓函",
+                "pId":"root",
+                "children": []
+            },
+            {
+                "id": "others",
+                "name": "其他",
+                "pId":"root",
+                "children": []
+            }
+    ],
+    "count": 924,
+    "is": true,
+    "tip": "操作成功！"
+}
+

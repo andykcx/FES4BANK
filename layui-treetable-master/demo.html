@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <style type="text/css">
+        p {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+
+<body class="layui-row">
+    
+    <div class="layui-col-md3" style="padding: 10px 10px;">
+        <!-- <div id="demo"></div> -->
+    </div>
+    
+    <div class="layui-col-md6" style="padding: 10px 10px;">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>基本功能</legend>
+            <div class="layui-field-box">
+                <p>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" id="expand" onmouseover="showTips1()">展开</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" id="collapse" onmouseover="showTips2()">收起</button>
+                </p>
+                <p>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" id="selected" onmouseover="showTips3()">获取选中节点</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" id="all" onmouseover="showTips8()">获取所有节点</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-primary" id="getNode" onmouseover="showTips9()">获取节点信息</button>
+					 <button class="layui-btn layui-btn-sm layui-btn-primary" onclick="add('gzs', '')" id="getNode" onmouseover="showTips9()">add</button>
+                </p>
+            </div>
+        </fieldset>
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>编辑功能</legend>
+            <div class="layui-field-box">
+                <p>
+                    <button class="layui-btn layui-btn-sm" id="addNode2" onmouseover="showTips4()">添加根节点</button>
+                    <button class="layui-btn layui-btn-sm" id="addNode" onmouseover="showTips5()">添加子节点</button>
+                </p>
+                
+                <p>
+                    <button class="layui-btn layui-btn-sm layui-btn-normal" id="editNode" onmouseover="showTips6()">编辑节点</button>
+                </p>
+
+                <p>
+                    <button class="layui-btn layui-btn-sm layui-btn-danger" id="removeNode" onmouseover="showTips7()">删除节点</button>
+                </p>
+            </div>
+        </fieldset>
+
+        <div id="demo"></div>
+    </div>
+    <div class="layui-col-md3" style="padding: 10px 10px;"></div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="demo.js"></script>
+<script type="text/javascript">
+
+function isFixedNode(id){
+	var arrName = ['djsqs','sqrzj','dyht','jkht','sqwts','gzs','zxh','others'];
+	for(var i in arrName){
+		if(arrName[i] == id){
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+function isEndNode(id){
+	// id 中包含 "_"则是 endNode
+	if( id.indexOf("_") > -1 ){
+		return true;
+	}
+	return false;
+}
+
+function del(row){
+	// 遍历 checked 所有 固定节点不能删除
+	if( !isFixedNode(row.id) ){
+		layer.alert('确定删除文件?', function(){
+			delNode(row.id); // 调用layui 内部 fun
+			layer.msg('删除成功!');
+		});
+	}else{
+		layer.alert('固定目录不能被删除!');
+	}
+}
+
+
+function add(row, arrNode){
+var row = {'id':'gzs'};
+var arrNode = {'id':'gzs_01', 'name':'公证书01.png', 'children':[]};
+	if( !isEndNode(row.id) ){
+		addNode(row.id, arrNode);
+		layer.msg('添加成功!');
+	}else{
+		layer.alert('选择的文件,不是目录!');
+	}
+}
+	
+var layout = [
+    { name: '文件夹名称', treeNodes: true, headerClass: 'value_col', colClass: 'value_col', style: '' },
+    {
+        name: '操作',
+        headerClass: 'value_col',
+        colClass: 'value_col',
+        style: 'width: 20%',
+        render: function(row) {
+            return "<a class='layui-btn layui-btn-danger layui-btn-sm' onclick='del(" + row + ")'><i class='layui-icon'>&#xe640;</i> 删除</a>"; //列渲染
+        }
+    },
+];
+
+layui.use(['form', 'tree', 'layer'], function() {
+    var layer = layui.layer, form = layui.form, $ = layui.jquery;
+
+    var tree = layui.treeGird({
+        elem: '#demo', //传入元素选择器
+        spreadable: false, //设置是否全展开，默认不展开
+        checkbox : true,
+        nodes: [{
+                "id": "djsqs",
+                "name": "登记申请书(原件)",
+                "checked" : true,
+                "children": [{
+                        "id": "djsqs_",
+                        "name": "子节点11",
+                    },
+                    {
+                        "id": "12",
+                        "name": "子节点12",
+                    }
+                ]
+            },
+            {
+                "id": "sqrzj",
+                "name": "申请人(代理人)身份证(原件)",
+                "checked" : true,
+                "children": [{
+                    "id": "sqrzj_",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            },
+            {
+                "id": "dyht",
+                "name": "抵押合同(含抵押物清单)",
+				"checked" : true,
+                "children": [{
+                        "id": "61",
+                        "name": "子节点11",
+                    },
+                    {
+                        "id": "62",
+                        "name": "子节点12",
+                    }
+                ]
+            },
+            {
+                "id": "jkht",
+                "name": "借款合同，授信合同(原件)",
+                "checked" : true,
+                "children": [{
+                    "id": "21",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            },
+            {
+                "id": "sqwts",
+                "name": "授权委托书",
+                "checked" : true,
+                "children": [{
+                    "id": "21",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            },
+            {
+                "id": "gzs",
+                "name": "公证书",
+                "checked" : true,
+                "children": [{
+                    "id": "21",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            },
+            {
+                "id": "zxh",
+                "name": "知晓函",
+                "checked" : true,
+                "children": [{
+                    "id": "21",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            },
+            {
+                "id": "others",
+                "name": "其他",
+                "checked" : true,
+                "children": [{
+                    "id": "21",
+                    "name": "子节点21",
+                    "children": [{
+                        "id": "211",
+                        "name": "子节点211"
+                    }]
+                }]
+            }
+        ],
+        layout: layout
+    });
+
+    form.render();
+
+	// 定义外部可用的 '全局'函数
+	window.delNode = function(id){
+		var node = tree.getNode(id);
+        tree.removeNode(node);
+	}
+	
+	//
+	window.addNode = function(selectedId, arrNode){
+		console.log(selectedId);
+		console.log(arrNode);
+		tree.addNode( tree.getNode(selectedId), {
+			arrNode
+		});
+	}
+	
+    $('#collapse').on('click', function() {
+        tree.collapse();
+    });
+
+    $('#expand').on('click', function() {
+        tree.expand();
+    });
+
+    $('#selected').on('click', function() {
+        console.log(tree.getSelected());
+        alert(JSON.stringify(tree.getSelected()));
+    });
+
+    $('#editNode').on('click', function() {
+        var node = tree.getNode("3");
+        node.name = '我就是变个名字';
+        tree.editNodeName(node);
+    });
+
+    $('#removeNode').on('click', function() {
+        var node = tree.getNode("11");
+        tree.removeNode(node);
+    });
+
+    $('#getNode').on('click', function() {
+        var node = tree.getNode("sqrzj");
+        alert(JSON.stringify(node));
+    });
+
+    $('#all').on('click', function() {
+        alert(JSON.stringify(tree.getNodes()));
+    });
+
+    $('#addNode').on('click', function() {
+        tree.addNode(tree.getNode("sqrzj"), {
+            "id": "22", "name": "子节点22", "children": [{
+                "id": "221",
+                "name": "子节点221",
+                "children": [{
+                    "id": "2211",
+                    "name": "子节点2211",
+                    "children": [{
+                        "id": "22111",
+                        "name": "子节点22111"
+                    }]
+                }]
+            },
+            {
+                "id": "222",
+                "name": "子节点222",
+                "children": [{
+                    "id": "2221",
+                    "name": "子节点2221",
+                    "children": [{
+                        "id": "22211",
+                        "name": "子节点22211"
+                    }]
+                }]
+            }]
+        });
+    });
+
+    $('#addNode2').on('click', function() {
+        tree.addNode(null, {
+            "id": "4", "name": "父节点4", "children": [{
+                "id": "41",
+                "name": "子节点41",
+                "children": [{
+                    "id": "411",
+                    "name": "子节点411",
+                    "children": [{
+                        "id": "4111",
+                        "name": "子节点4111"
+                    }]
+                }]
+            },
+            {
+                "id": "42",
+                "name": "子节点42",
+                "children": [{
+                    "id": "421",
+                    "name": "子节点421",
+                    "children": [{
+                        "id": "4211",
+                        "name": "子节点4211"
+                    }]
+                }]
+            }]
+        });
+    });
+
+});
+
+
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{config system_name}}</title>
+    <link rel="stylesheet" href="{{assert web/liyang/plugins/layui/css/layui.css}}" media="all"/>
+    <link rel="stylesheet" href="{{assert web/liyang/plugins/font-awesome/css/font-awesome.min.css}}"
+          media="all"/>
+    <link rel="stylesheet" href="{{assert web/liyang/build/css/app.css}}" media="all"/>
+    <link rel="stylesheet" href="{{assert web/liyang/build/css/themes/green.css}}" media="all" id="skin"
+          kit-skin/>
+</head>
+
+<body class="kit-theme">
+<div class="layui-layout layui-layout-admin kit-layout-admin">
+    
+
+    <div class="layui-body" id="container">
+        <!-- <iframe src="{{url "web/Index/index/type/1"}}"></iframe>-->
+        <!-- 内容主体区域 -->
+
+			<div class="row">
+				<p>
+					<a class="layui-btn layui-btn-sm" href="{{url "web/Oa/Emp/create"}}">添加员工</a>
+				</p>
+				<div class="row">
+				 <div class="layui-panel panel-info">
+				 
+					 <table class="layui-table table-bordered">
+					  <thead>
+						  <tr>
+							<th>姓名</th>
+							<th>部门</th>
+							<th>邮箱</th>
+							<th>是否离职</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						  </tr>
+						</thead>
+						<tbody>
+						{{loop $emp $key $v}}
+						  <tr>
+							<td scope="row">{{$v['name']}}</td>
+							<td>
+							  {{$v['dept_name']}}
+							</td>
+							<td>{{$v['email']}}</td>
+							<td>{{$v['leave']}}</td>
+							<td>{{$v['created_at']}}</td>
+							<td>
+								<a href="{{url 'web/Oa/Emp/edit'}}" class="layui-btn layui-btn-sm">编辑</a>
+								<a href="{{url 'web/Oa/Emp/destroy'}}" class="layui-btn layui-btn-sm">删除</a>
+							</td>
+						  </tr>
+						  {{/loop}}
+						</tbody>
+					  </table>
+				  </div>
+			</div>
+   </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <p>{{echo date('Y');}} &copy; nd</p>
+    </div>
+</div>
+<script src="{{assert web/liyang/plugins/layui/layui.js}}"></script>
+</body>
+</html>

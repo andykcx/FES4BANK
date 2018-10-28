@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抵押申请-收件</title>
+</head>
+<style>
+   .container{width: 90%;margin: 0 auto;border: 1.5px rgb(236, 236, 236) solid;margin-top: 20px}
+    .container p{text-align: center;color: rgb(32, 32, 32);font-size: 20px;margin-top:20px;background-color: rgb(236, 236, 236);width: 100%}
+    #dyr-p{text-align: center;color:rgb(32, 32, 32);font-size: 20px;margin-top:20px;background-color: rgb(236, 236, 236)}
+    .t-b{background-color: rgb(240, 240, 240);text-align: center;font-size: 20px;width: 100px}
+    .t-z{text-align: center}
+    .layui-table tbody tr:hover {background-color:none}
+    .cont{width: 90%;margin: 0 auto;border: 1.5px rgb(236, 236, 236) solid;margin-top: 20px}
+    #t-p{text-align: center;background-color: rgb(236, 236, 236);margin-top: 20px;font-size: 20px;color: rgb(32, 32, 32);}
+    .nav{text-align: center;background-color: rgb(236, 236, 236);width: 100%;color: rgb(32, 32, 32);font-size: 20px;margin-top:20px;}
+    .content{width: 90%;margin: 0 auto;border: 1.5px rgb(236, 236, 236) solid;margin-top: 20px}
+    .content p{text-align: center;color: rgb(32, 32, 32);font-size: 20px;margin-top:20px;width: 100%}
+    .row{width: 99%;height:600px;margin: 0 auto;border: 1.5px rgb(236, 236, 236) solid;overflow: hidden}
+    .left{width: 600px;height: 600px;float: left;overflow: hidden;border: 1px red solid}
+    .right{width: 1010px;height: 600px;float: left;overflow: hidden;border: 1px blue solid; margin-left: 20px}
+</style>
+<link rel="stylesheet" href="./layui/css/layui.css">
+<script src="./layui/layui.js"></script>
+<body>
+    <div class="container">
+        <p>抵押人</p>
+        <table class="layui-table">
+           
+            <thead>
+              <tr>
+                <th><input type="checkbox" name="" title="全选" id="theadInp" >全选</th>
+                <th>序号</th>
+                <th>名称</th>
+                <th>证件种类</th>
+                <th>证件号</th>
+                <th>共有份额</th>
+                <th>电话</th>
+                <th>操作</th>
+              </tr> 
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <td><input type="checkbox" name=""></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name=""></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <p id="dyr-p">抵押人代理人</p>
+          <table class="layui-table">
+              <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                    <th><input type="checkbox" name="" title="全选" id="theadInp1" >全选</th>
+                  <th>序号</th>
+                  <th>名称</th>
+                  <th>证件种类</th>
+                  <th>证件号</th>
+                  <th>共有份额</th>
+                  <th>电话</th>
+                  <th>操作</th>
+                </tr> 
+              </thead>
+              <tbody id="tbody1">
+                <tr>
+                  <td><input type="checkbox" name=""    ></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name=""  ></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="layui-table">
+                <colgroup>
+                  <col width="150">
+                  <col width="200">
+                  <col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="t-b">受理科室</td>
+                    <td></td>
+                    <td class="t-b">受理人员</td>
+                    <td></td>
+                    <td rowspan="6" width='180px'  class="t-b">照片采集</td>
+                    <td rowspan="6" width='200px' class="t-z">照片</td>
+                  </tr>
+                  <tr>
+                    <td class="t-b">优先级</td>
+                    <td></td>
+                    <td class="t-b">不动产所在区域<span style="color:rgb(201, 11, 11)">*</span></td>
+                    <td width='200px'></td>
+                   
+                  
+                  </tr>
+                  <tr>
+                    <td class="t-b">查询密码</td>
+                    <td></td>
+                    <td class="t-b">通知人姓名<span style="color:rgb(201, 11, 11)">*</span></td>
+                    <td></td>
+                    
+                   
+                  </tr>
+                  <tr>
+                    <td class="t-b">通知方式</td>
+                    <td></td>
+                    <td class="t-b">移动电话<span style="color:rgb(201, 11, 11)">*</span></td>
+                    <td></td>
+                    
+                   
+                  </tr>
+                  <tr>
+                    <td class="t-b">通知人电话</td>
+                    <td></td>
+                    <td width="200px" class="t-b">电子邮件</td>
+                    <td></td>
+                    
+                  
+                  </tr>
+                  <tr>
+                    <td  class="t-b">坐落<span style="color:rgb(201, 11, 11)">*</span></td>
+                    <td colspan="3"></td>
+                   
+                    
+                  </tr>
+                  <tr>
+                    <td class="t-b">收件备注</td>
+                    <td colspan="5"></td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              <table class="layui-table">
+                <colgroup>
+                  <col width="150">
+                  <col width="200">
+                  <col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="t-b">受理编号</td>
+                    <td>201802260289</td>
+                    <td class="t-b" width='200px'>登记大类</td>
+                    <td width='200px'>抵押登记</td>
+                    <td class="t-b" width='200px'>登记小类</td>
+                    <td width='200px'>最高额抵押权</td>
+                  </tr>
+                  <tr>
+                    <td class="t-b">登记原因</td>
+                    <td>借贷</td>
+                    <td class="t-b" width='200px'>收件时间</td>
+                    <td width='200px'>2018-02-26 15:10:18</td>
+                    <td  class="t-b" width='200px'>承诺时间</td>
+                    <td width='200px'>2018-04-26 10:15:26</td>
+                  </tr>
+                  <tr>
+                    <td class="t-b">交易合同编号</td>
+                    <td>2016-11-28</td>
+                    <td class="t-b" width='200px'>合同业务编号</td>
+                    <td width='200px'></td>
+                    <td class="t-b" width='200px'>测绘编号</td>
+                    <td width='200px'>c201802050224</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p id="dyr-p">相关证号</p>
+        <table class="layui-table">
+           
+            <thead>
+              <tr>
+                <th><input type="checkbox" name="" title="全选" id="theadInp2" >全选</th>
+                <th>相关证号</th>
+                <th>相关证类型</th>
+                <th>权利人名称</th>
+                 <th>坐落</th> 
+                 <th>操作</th>          
+              </tr> 
+            </thead>
+            <tbody id="tbody2">
+              <tr>
+                <td><input type="checkbox" name=""></td>
+                <td>兰房权证(七里河区)字第70309号</td>
+                <td>房产证</td>
+                <td></td>
+                <td>兰州市七里河区西站西路52号一单元202</td>
+                <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name=""></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <p>抵押权人</p>
+          <table class="layui-table">
+             
+              <thead>
+                <tr>
+                    <th><input type="checkbox" name="" title="全选" id="theadInp3" >全选</th>
+                  <th>序号</th>
+                  <th>名称</th>
+                  <th>证件种类</th>
+                  <th>证件号</th>
+                  <th>电话</th>
+                  <th>操作</th>
+                </tr> 
+              </thead>
+              <tbody id="tbody3">
+                <tr>
+                  <td><input type="checkbox" name="" ></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" ></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <p id="dyr-p">抵押权人代理人</p>
+            <table class="layui-table">
+               
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" name="" title="全选" id="theadInp4" >全选</th>
+                    <th>序号</th>
+                    <th>名称</th>
+                    <th>证件种类</th>
+                    <th>证件号</th>
+                    <th>电话</th>
+                    <th>代理人关系</th>
+                    <th>操作</th>
+                  </tr> 
+                </thead>
+                <tbody id="tbody4">
+                  <tr>
+                    <td><input type="checkbox" name="" ></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name=""></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <div class="nav"> 申请结果</span></div>
+              
+              <table class="layui-table">
+                      <colgroup>
+                        <col width="150">
+                        <col width="200">
+                        <col>
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox" name="" title="全选" id="theadInp5" >全选</th>
+                          <th>序号</th>
+                          <th>受理编号</th>
+                          <th>不动产证号</th>
+                          <th>详情</th>
+                          <th>操作</th>
+                        </tr> 
+                      </thead>
+                      <tbody id="tbody5">
+                        <tr>
+                          <td><input type="checkbox" name=""></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" name=""></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td width='160px'><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+      
+                    <table class="layui-table">
+                          <colgroup>
+                            <col width="150">
+                            <col width="200">
+                            <col>
+                          </colgroup>
+                          <tbody>
+                            <tr>
+                              <td  class="t-b">不动产单元号</td>
+                              <td colspan="6"></td>
+                            </tr>
+                            <tr>
+                              <td  class="t-b">不动产单元坐落</td>
+                              <td colspan="4"></td>
+                              <td  class="t-b">金额币种</td>
+                              <td>人民币</td>
+                            </tr>
+                            <tr>
+                              <td  class="t-b">房屋抵押面积</td>
+                              <td></td>
+                              <td  class="t-b">土地抵押面积</td>
+                              <td></td>
+                               <td  class="t-b">抵押方式</td>
+                               <td colspan="2"></td>
+                              
+                          </tr>
+                          <tr>
+                              <td  class="t-b">在建建筑物坐落</td>
+                              <td colspan="6"></td>
+                          </tr>
+                           <tr>
+                              <td  class="t-b" rowspan="2">不动产价值</td>
+                              <td></td>
+                              <td  class="t-b">在建建筑物抵押范围</td>
+                              <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                              <td  class="t-b">抵押担保范围</td>
+                              <td  colspan="4"></td>
+                            </tr>
+                            <tr>
+                              <td  class="t-b" rowspan="2">被担保主债权数额</br>(最高债权数额)</td>
+                              <td></td>
+                              <td  class="t-b">债务履行期限</td>
+                              <td></td>
+                               <td  class="t-b" rowspan="2">债务履行期限<br>(债权确定时间)</td>
+                               <td  class="t-b">起</td>
+                               <td></td>
+                               
+                          </tr>
+                          <tr>
+                              <td></td>
+                              <td  class="t-b">抵押顺位</td>
+                              <td></td>
+                              <td  class="t-b">止</td>
+                              <td></td>
+                              
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="cont">
+                        <p id="t-p">第三方借款人(债务人)</p>
+                        <table class="layui-table">
+                           
+                            <thead>
+                              <tr>
+                                <th><input type="checkbox" name="" title="全选" id="theadInp6" >全选</th>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>证件种类</th>
+                                <th>证件号</th>
+                                <th>电话</th>
+                                <th>操作</th>
+                              </tr> 
+                            </thead>
+                            <tbody id="tbody6">
+                              <tr>
+                                <td><input type="checkbox" name=""></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td width='160px';><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                              </tr>
+                              <tr>
+                                <td><input type="checkbox" name=""></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td width='160px';><button class="layui-btn layui-btn-sm ">添加</button><button class="layui-btn layui-btn-sm layui-btn-danger">删除</button><button class="layui-btn layui-btn-sm layui-btn-warm">修改</button></td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+                          <table class="layui-table">
+                                  <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                  </colgroup>
+                                  <tbody>
+                                   
+                                   <tr>
+                                      <td   class="t-b">附记</td>
+                                      <td colspan="5">2016-11-28</td>
+                                   </tr>
+                                  </tbody>
+                                </table>
+    </div>
+    <div class="content">
+      <p>添加附件</p>
+      <div class="row">
+        <form action="post">
+            <div class="left">
+              <h3>流程附件：</h3>
+              <ul>
+                <li>(0)登记申请书(原件)</li>
+                <li>(0)申请人(代理人)身份证(原件)</li>
+                <li>抵押</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="right">
+
+            </div>
+          </form>
+      </div>
+    </div>
+</body>
+<script src="./static/js/jquery-3.3.1.min.js"></script>
+<script src="./static/js/apply.js">
+  
+</script>
+</html>

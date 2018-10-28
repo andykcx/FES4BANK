@@ -1,0 +1,318 @@
+Response Request
+
+OwnershipInfo
+{"_comment":"----------------不动产信息查询-------------------"}
+{
+	"方式描述":"",
+	"请求地址":"http://server?action=bdcxx",
+	"请求方式":"post",
+	"格式":"json",
+	"令牌":"token"
+}
+
+{
+	"code": 0,
+	"msg": "请求查询",
+	"data": {
+		"list": [
+					{
+						"bdczh": "不动产证号",
+						"bdcdyh": "不动产单元号",
+						"qlr": "权利人",
+						"qlrzjh": "权利人证件号"
+					}
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+{
+	"code": 0,
+	"msg": "返回查询",
+	"data": {
+		"list": [
+					{
+						"qzslbh": "权证受理编号(权证唯一主键)",
+						"bdczh": "不动产证号",
+						"bdczlx":"权证/预告",
+						"qlr":[
+								[{
+									"name": "抵押权人",
+									"xh": "序号",
+									"zjlx": "证件类型",
+									"zjh": "证件号",
+									"tel": "电话"
+								}]
+						],
+						"bdcdyxx":[
+								{
+									"bdcdyh": "不动产单元号",
+									"zl": "坐落",
+									"jzmj": "建筑面积"
+								}
+						],
+						"dyqk":[
+									{
+										"id":"抵押受理编号",
+										"je":"贷款金额",
+										"number":"抵押顺位"
+									}
+						],
+						"xzxx": "权利状态(查封,异议)"
+					}
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+ApplicationStatus 
+{"_comment":"":"----------------申请状态查询-------------------"}"}
+{
+	"方式描述":"",
+	"请求地址":"http://server?action=sqzt",
+	"请求方式":"post",
+	"格式":"json",
+	"令牌":"token"
+}
+
+{
+	"code": 0,
+	"msg": "请求查询",
+	"data": {
+		"list": [
+					"外网业务ID"
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+{
+	"code": 0,
+	"msg": "返回查询",
+	"data": {
+		"list": [
+					{
+						"uid": "外网业务ID",
+						"status": "当前步骤",
+						"dtime": "最后操作时间",
+						"bz": "备注"
+					}
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+ApplicationContent
+{"_comment":"":"----------------抵押申请-------------------"}"}
+
+{
+	"方式描述":"",
+	"请求地址":"http://server?action=dysq",
+	"请求方式":"post",
+	"格式":"json",
+	"令牌":"token"
+}
+
+{
+	"code": 0,
+	"msg": "请求查询",
+	"data": {
+		"list": [
+					{
+						"uid": "外网业务ID",
+						"qzslbh":[
+								"权证受理编号(权证唯一主键)"
+						],
+						"created_at": "申请日期",
+						"dyqr":[{
+							"name": "抵押权人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"dyqrdlr":[{
+							"name": "抵押权人代理人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"dyrdlr":[{
+							"name": "抵押人代理人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"ywlx": "业务类型",
+						"dyfs": "抵押方式",
+						"dyje": "本次抵押金额",
+						"stime": "债务履行期限起",
+						"etime": "债务履行期限止",
+						"dysw": "抵押顺位",
+						"stime": "债务履行期限起",
+						"jkr":[{
+							"name": "借款人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"links":[
+							{
+								"name": "Google",
+								"url": "http://www.google.com"
+							}
+						],
+						"slry": "受理人员",
+						"tzr": "通知人",
+						"tzdh": "通知电话",
+						"tzrdz": "通知人地址",
+						"tzbz": "通知备注"
+					}
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+{
+	"code": 0,
+	"msg": "返回查询"
+}
+
+-----------------------------------------------
+-----------------------------------------------
+// 修改后
+
+ApplicationContent
+{"_comment":"":"----------------抵押申请-------------------"}"}
+
+{
+	"方式描述":"",
+	"请求地址":"http://server?action=dysq",
+	"请求方式":"post",
+	"格式":"json",
+	"令牌":"token"
+}
+
+{
+	"code": 0,
+	"msg": "请求查询",
+	"data": {
+		"list": [
+					{
+						"uid": "外网业务ID",
+						"qzslbh":[
+								"权证受理编号(权证唯一主键)"
+						],
+						"sqsj": "申请日期",//created_at
+						"dyqr":[{
+							"name": "抵押权人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"dyqrdlr":[{
+							"name": "抵押权人代理人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"dyrdlr":[{
+							"name": "抵押人代理人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"ywlx": "业务类型",
+						"dyfs": "抵押方式",
+						"dyje": "本次抵押金额",
+						"stime": "债务履行期限起",//重复去掉
+						"etime": "债务履行期限止",
+						"dysw": "抵押顺位",
+						"htbh": "增加合同编号",//todo ;增加合同编号
+						"dymj" : 0,//todo:增加 抵押面积
+                        "zjjzwzl" : "",//todo:在建建筑物坐落
+                        "zjjzwdyfw" : "",//todo:在建建筑物抵押范围
+                        "pgje" : 0,//todo:不动产评估价格/金额
+                        "dbfw" : "",//todo:担保范围
+						"jkr":[{
+							"name": "借款人",
+							"xh": "序号",
+							"zjlx": "证件类型",
+							"zjh": "证件号",
+							"tel": "电话"
+						}],
+						"links":[
+							{
+								"name": "Google",
+								"url": "http://www.google.com"
+							}
+						],
+						"slry": "受理人员",
+						"tzr": "通知人",
+						"tzdh": "通知电话",
+						"tzrdz": "通知人地址",
+						"tzbz": "通知备注"
+					}
+				],
+		"totalCount": 1,
+		"limit": 10
+	}
+}
+
+
+
+{
+    "code": 0,
+    "msg": "返回查询",
+    "data": {
+        "list": [
+            {
+                "uid": "外网业务ID",
+                "errinfo": "错误原因"
+            },
+            {
+                "uid": "外网业务ID",
+                "errinfo": "成功"
+            }
+        ],
+        "totalCount": 1,
+        "limit": 10
+    }
+}
+
+
+{"_comment":"":"----------------请求上传附件-------------------"}"}
+
+{
+	"方式描述":"",
+	"请求地址":"http://bank.loc/public/index.php/bank/DownloadFujian/downloadFujian",
+	"请求方式":"post",
+	"格式":"json",
+	"令牌":"token"
+}
+
+{
+    "code": 0,
+    "msg": "请求附件",
+    "data": {
+		"username":'fjUser',
+		"password":'123456',
+		"slbh":[
+			{"url": "xxx/xxx.png"}
+		],
+		"totalCount": 1,
+		"limit": 10
+    }
+}
+

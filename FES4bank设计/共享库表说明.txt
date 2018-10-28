@@ -1,0 +1,260 @@
+WW_FJQD 	附件清单
+comment on table WW_FJQD
+  is '附件清单';
+comment on column WW_FJQD.qdid
+  is '清单ID';
+comment on column WW_FJQD.sqbh
+  is '申请编号';
+comment on column WW_FJQD.xh
+  is '序号';
+comment on column WW_FJQD.fjmc
+  is '附件名称';
+comment on column WW_FJQD.fjlx
+  is '附件类型';
+comment on column WW_FJQD.ftplj
+  is '附件路径';
+comment on column WW_FJQD.fjdx
+  is '附件大小';
+comment on column WW_FJQD.fjnr
+  is '附件内容';
+comment on column WW_FJQD.fjzt
+  is '附件状态';
+comment on column WW_FJQD.fjtjsj
+  is '附件添加时间';
+comment on column WW_FJQD.fjkzm
+  is '附件扩展名';
+comment on column WW_FJQD.fjml
+  is '附件目录';
+alter table WW_FJQD
+  add constraint PK_WW_FJQD primary key (QDID);
+ 
+ WW_DYSQ	抵押类业务申请
+comment on table WW_DYSQ
+  is '抵押类业务申请';
+comment on column WW_DYSQ.sqbh
+  is '申请编号';
+comment on column WW_DYSQ.xgzh
+  is '相关不动产证/证明号';
+comment on column WW_DYSQ.dylx
+  is '抵押类型';
+comment on column WW_DYSQ.dysw
+  is '抵押顺位';
+comment on column WW_DYSQ.zwr
+  is '债务人';
+comment on column WW_DYSQ.zwrzjlx
+  is '债务人证件类型';
+comment on column WW_DYSQ.zwrzjh
+  is '债务人证件号';
+comment on column WW_DYSQ.dyfs
+  is '抵押方式';
+comment on column WW_DYSQ.dymj
+  is '抵押面积';
+comment on column WW_DYSQ.zjjzwzl
+  is '在建建筑物坐落';
+comment on column WW_DYSQ.zjjzwdyfw
+  is '在建建筑物抵押范围';
+comment on column WW_DYSQ.bdbzzqse
+  is '被担保主债权数额';
+comment on column WW_DYSQ.pgje
+  is '不动产评估价格/金额';
+comment on column WW_DYSQ.dbfw
+  is '担保范围';
+comment on column WW_DYSQ.zgzqqdss
+  is '最高债权确定事实';
+comment on column WW_DYSQ.zgzqse
+  is '最高债权数额';
+comment on column WW_DYSQ.dyqx
+  is '抵押期限';
+comment on column WW_DYSQ.qlqssj
+  is '权利起始时间';
+comment on column WW_DYSQ.qljssj
+  is '权利结束时间';
+comment on column WW_DYSQ.bdcdyh
+  is '不动产单元号';
+alter table WW_DYSQ
+  add constraint PK_WW_DYSQ primary key (SQBH);
+  
+DYAQ 	抵押权
+comment on table DYAQ
+  is '抵押权';
+comment on column DYAQ.ywh
+  is '业务号';
+comment on column DYAQ.ysdm
+  is '要素代码';
+comment on column DYAQ.bdcdyh
+  is '不动产单元号';
+comment on column DYAQ.dybdclx
+  is '不动产类型';
+comment on column DYAQ.dyr
+  is '抵押人';
+comment on column DYAQ.dyfs
+  is '抵押方式';
+comment on column DYAQ.djlx
+  is '登记类型';
+comment on column DYAQ.djyy
+  is '登记原因';
+comment on column DYAQ.zjjzwzl
+  is '在建建筑物坐落';
+comment on column DYAQ.zjjzwdyfw
+  is '在建建筑物抵押范围';
+comment on column DYAQ.bdbzzqse
+  is '被担保主债权数额';
+comment on column DYAQ.zwlxqx
+  is '债务履行期限';
+comment on column DYAQ.zwlxqssj
+  is '债务履行起始时间';
+comment on column DYAQ.zwlxjssj
+  is '债务履行结束时间';
+comment on column DYAQ.zgzqqdss
+  is '最高债权确定事实';
+comment on column DYAQ.zgzqse
+  is '最高债权数额';
+comment on column DYAQ.zxdyywh
+  is '注销抵押业务号';
+comment on column DYAQ.zxdyyy
+  is '注销抵押原因';
+comment on column DYAQ.zxsj
+  is '注销时间';
+comment on column DYAQ.bdcdjzmh
+  is '不动产登记证明号';
+comment on column DYAQ.qxdm
+  is '区县代码';
+comment on column DYAQ.djjg
+  is '登记机构';
+comment on column DYAQ.dbr
+  is '登簿人';
+comment on column DYAQ.djsj
+  is '登记时间';
+comment on column DYAQ.qlqtzk
+  is '权利其他状况';
+comment on column DYAQ.fj
+  is '附记';
+comment on column DYAQ.qszt
+  is '权属状态';
+comment on column DYAQ.dylx
+  is '抵押类型';
+
+CFDJ	  查封登记
+comment on table CFDJ
+  is '查封登记';
+comment on column CFDJ.ywh
+  is '业务号';
+comment on column CFDJ.ysdm
+  is '要素代码';
+comment on column CFDJ.bdcdyh
+  is '不动产单元号';
+comment on column CFDJ.cfjg
+  is '查封机关';
+comment on column CFDJ.cflx
+  is '查封类型';
+comment on column CFDJ.cfwj
+  is '查封文件';
+comment on column CFDJ.cfwh
+  is '查封文号';
+comment on column CFDJ.cfqx
+  is '查封期限';
+comment on column CFDJ.cfqssj
+  is '查封起始时间';
+comment on column CFDJ.cfjssj
+  is '查封结束时间';
+comment on column CFDJ.cffw
+  is '查封范围';
+comment on column CFDJ.qxdm
+  is '区县代码';
+comment on column CFDJ.djjg
+  is '登记机构';
+comment on column CFDJ.dbr
+  is '登簿人';
+comment on column CFDJ.djsj
+  is '登记时间';
+comment on column CFDJ.jfywh
+  is '解封业务号';
+comment on column CFDJ.jfjg
+  is '解封机关';
+comment on column CFDJ.jfwj
+  is '解封文件';
+comment on column CFDJ.jfwh
+  is '解封文号';
+comment on column CFDJ.jfdbr
+  is '解封登簿人';
+comment on column CFDJ.jfdjsj
+  is '解封登记时间';
+comment on column CFDJ.qlqtzk
+  is '权利其他状况';
+comment on column CFDJ.fj
+  is '附记';
+comment on column CFDJ.qszt
+  is '权属状态';
+  
+  
+FDCQ2  房地产权
+comment on table FDCQ2
+  is '房地产权独幢';
+comment on column FDCQ2.ywh
+  is '业务号';
+comment on column FDCQ2.ysdm
+  is '要素代码';
+comment on column FDCQ2.bdcdyh
+  is '不动产单元号';
+comment on column FDCQ2.qllx
+  is '权利类型';
+comment on column FDCQ2.djlx
+  is '登记类型';
+comment on column FDCQ2.djyy
+  is '登记原因';
+comment on column FDCQ2.fdzl
+  is '房地坐落';
+comment on column FDCQ2.tdsyqr
+  is '土地使用权人';
+comment on column FDCQ2.dytdmj
+  is '独用土地面积';
+comment on column FDCQ2.fttdmj
+  is '分摊土地面积';
+comment on column FDCQ2.tdsyqx
+  is '土地使用期限';
+comment on column FDCQ2.tdsyqssj
+  is '土地使用起始时间';
+comment on column FDCQ2.tdsyjssj
+  is '土地使用结束时间';
+comment on column FDCQ2.fdcjyjg
+  is '房地产交易价格';
+comment on column FDCQ2.ghyt
+  is '规划用途';
+comment on column FDCQ2.fwxz
+  is '房屋性质';
+comment on column FDCQ2.fwjg
+  is '房屋结构';
+comment on column FDCQ2.szc
+  is '所在层';
+comment on column FDCQ2.zcs
+  is '总层数';
+comment on column FDCQ2.jzmj
+  is '建筑面积';
+comment on column FDCQ2.zyjzmj
+  is '专有建筑面积';
+comment on column FDCQ2.ftjzmj
+  is '分摊建筑面积';
+comment on column FDCQ2.jgsj
+  is '竣工时间';
+comment on column FDCQ2.bdcqzh
+  is '不动产权证号';
+comment on column FDCQ2.qxdm
+  is '区县代码';
+comment on column FDCQ2.djjg
+  is '登记机构';
+comment on column FDCQ2.dbr
+  is '登簿人';
+comment on column FDCQ2.djsj
+  is '登记时间';
+comment on column FDCQ2.qlqtzk
+  is '权利其他状况';
+comment on column FDCQ2.fj
+  is '附记';
+comment on column FDCQ2.qszt
+  is '权属状态';
+comment on column FDCQ2.gytdmj
+  is '共有土地面积';
+comment on column FDCQ2.ytmc
+  is '用途名称';
+comment on column FDCQ2.fwxzmc
+  is '房屋性质名称';

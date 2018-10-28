@@ -1,0 +1,61 @@
+<?php if (!class_exists('\Cml\View')) die('Access Denied');?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抵押申请-收件</title>
+</head>
+<link rel="stylesheet" href="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/layui/css/layui.css");?>">
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/jquery-2.2.3.min.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/layer/layer.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/layui/layui.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/vue.min.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/vue-resource.min.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/js/layui-xtree.js");?>"></script>
+<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/js/ajaxfileupload.js");?>"></script>
+
+
+<body>
+
+<div><button id="test_table">{{name}}</button></div>	
+<div><button id="dd_table">{{name}}</button></div>	
+</body>
+
+<script>
+var test_table = new Vue({
+	el:'#test_table',
+	data:{
+		name:'',
+	},
+	methods:{
+		showDetails:function(){
+			var that = this; 
+			that.$http.post('<?php \Cml\Http\Response::url("bank/Search/ajaxEditApply");?>',
+					 {	
+						params: {
+							getName:'fff'
+						}
+					 }).then(function(response){
+						this.name = response.data; // promise的then成功之后，将response返回的数据data，保存到aboutData数组里
+						alert(response.data);
+						dd_table.name = 'changed.';
+				},function (error) {
+						console.log(error);
+			})
+		}
+	},
+	mounted:function() { 
+		this.showDetails();
+	}
+});
+
+var dd_table = new Vue({
+	el:'#dd_table',
+	data:{
+		name:''
+	}
+});
+
+</script>
+      </html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>抵押申请查询</title>
+</head>
+<style>
+      
+</style>
+<link rel="stylesheet" href="{{assert bank/liyang/plugins/layui/css/layui.css}}">
+<script src="{{assert bank/liyang/plugins/layui/layui.js}}"></script>
+<script src="{{assert bank/liyang/static/js/common.js}}"></script>
+<script src="{{assert bank/liyang/plugins/vue.min.js}}"></script>
+
+
+<body>
+ <table class="layui-hide" id="test" lay-filter="test"></table>
+ 
+<script type="text/html" id="toolbarDemo">
+ 
+  <div class="layui-cont">
+	  搜索：
+	  <div class="layui-inline">
+		<input class="layui-input" name="" id="slbh" placeholder="抵押申请编号" autocomplete="off">
+	  </div>
+	  <div class="layui-inline">
+		<input class="layui-input" name="" id="jkr" placeholder="借款人" autocomplete="off">
+	  </div>
+	   <div class="layui-inline">
+		<input class="layui-input" name="" id="jkrzjh" placeholder="借款人证件号" autocomplete="off">
+	  </div>
+	  <div class="layui-inline">
+		<input class="layui-input" name="" id="dyr" placeholder="抵押人" autocomplete="off">
+	  </div>
+	  <div class="layui-inline">
+		<input class="layui-input" name="" id="dyrzjh" placeholder="抵押人证件号" autocomplete="off">
+	  </div>
+	   <div class="layui-inline">
+		<button class="layui-btn" id="searchQz" data-type="reload"><i class="layui-icon" style="font-size: 20px; ">&#xe615;</i>搜索</button>
+		<button class="layui-btn" lay-event="getCheckData">选定</button>
+	  </div>
+  </div>
+   
+</script>
+		
+ 
+<script>
+layui.use(['table', 'jquery'], function(){
+  var table = layui.table;
+  var $ = layui.$;
+	table.render({
+			elem: '#test'
+		/*	,url:'{{url "bank/Apply/ajaxSearchQz"}}'
+			,parseData: function(res){ //res 即为原始返回的数据
+				console.log(res);
+				return {
+				  "code": res.data.code, //解析接口状态
+				  "msg": res.data.msg, //解析提示文本
+				  "count": res.data.count, //解析数据长度
+				  "data": res.data.list //解析数据列表
+				};
+			}
+		*/
+			,toolbar: '#toolbarDemo'
+			,defaultToolbar:[]
+			,title: '用户数据表'
+			,cols: [[
+			  ,{field:'slbh', title:'申请编号', fixed:'left', width:180}
+			  ,{field:'created_at', title:'申请日期', width:180}
+			  ,{field:'qzbh', title:'权证编号', width:120}
+			  ,{field:'dyje', title:'抵押金额', width:120}
+			  ,{field:'utime', title:'状态更新日期', width:180}
+			  ,{field:'status', title:'当前状态', width:120}
+			  ,{field:'action', title:'操作', fixed:'right', width:180}
+			]]
+			,id: 'testReload'
+			,page: true
+			,done:function(res, curr, count){
+			
+			}
+	  });
+			  
+   var $ = layui.$, active = {
+    reload: function(){
+ 
+console.log('in active reload.');	 
+      //执行重载
+      table.reload('testReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+		,url:'{{url "bank/Search/applySearch"}}?t='+ new Date()
+		,parseData: function(res){ //res 即为原始返回的数据
+				console.log(res);
+				return {
+				  "code": res.data.code, //解析接口状态
+				  "msg": res.data.msg, //解析提示文本
+				  "count": res.data.count, //解析数据长度
+				  "data": res.data.list //解析数据列表
+				};
+		}
+        ,where: {
+            slbh: $('#slbh').val(),
+			jkr:  $('#jkr').val(),
+			jkrzjh: $('#jkrzjh').val(),
+			dyr: $('#dyr').val(),
+			dyrzjh: $('#dyrzjh').val()
+        }
+      });
+    }
+  };
+  
+  $('#searchQz').on('click', function(){
+	
+	var dyrzjh = $('#dyrzjh').val();
+	var jkrzjh = $('#jkrzjh').val();
+	if( ('' != dyrzjh) && !checkSfz(dyrzjh) ){
+		layer.msg('请输入正确的身份证号', {icon: 5}, function(){
+		//关闭后的操作
+		});
+		return false;
+	}
+	if( ('' != jkrzjh) && !checkSfz(jkrzjh) ){
+		layer.msg('请输入正确的身份证号', {icon: 5}, function(){
+		//关闭后的操作
+		});
+		return false;
+	}
+	console.log('in searchQz');
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+ 
+	
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+	    var data = checkStatus.data;
+		if('' == checkStatus.data){
+			layer.alert('未选定记录!');
+			break;
+		}
+        layer.alert(JSON.stringify(data));
+		selected(data);
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+    };
+  });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    console.log(obj)
+	var slbh = obj.data.slbh;//obj;
+    if(obj.event === 'del'){
+		console.log('del apply:slbh:' + slbh);
+		layer.confirm('确定要删除该记录吗?', {
+			  btn: ['是的','放弃'] //按钮
+			},function(){
+				$.ajax({
+					type:'POST',
+					dataType:'json',
+					url:'{{url "bank/Search/delApplyRecord"}}',
+					data:{slbh:slbh},
+					async : false,
+					success:function(result){
+						console.log('apply del success:result');
+						console.log(result);
+						layer.closeAll('dialog');
+						if(0 == result.code){ // 删除信息提交成功后的反馈信息处理
+							obj.del();
+							//layer.close(index);
+						}else{	
+						}
+					}
+				});	
+			},function(){
+				
+		});
+	
+    }else if (obj.event === "detail") {
+		var index = layer.open({
+					type: 2,
+					title: '抵押申请详情',
+					maxmin: true,
+					area: ['800px', '500px'],
+					content: '{{url "bank/Search/showDetail?slbh="}}' + slbh,
+					end: function(){
+					}
+				 });
+		layer.full(index);
+	}else if (obj.event === "edit") {
+		layer.open({
+					type: 2,
+					title: '抵押申请编辑',
+					maxmin: true,
+					area: ['800px', '500px'],
+					content: '{{url "bank/Search/editApply"}}',
+					end: function(){
+					}
+				 });
+	}else if (obj.event === "send") {
+		
+		console.log('send apply:slbh:' + slbh);
+		layer.confirm('确认提交申请?', {
+			  btn: ['是的','放弃'] //按钮
+			},function(){
+				$.ajax({
+					type:'POST',
+					dataType:'json',
+					async : false,
+					url:'{{url "bank/Search/sendApplyRecord"}}',
+					data:{'slbh':slbh},
+					success:function(result){
+						console.log('apply success:result');
+						console.log(result);
+						layer.closeAll('dialog');
+						if(0 == result.code){ // 提交成功后的反馈信息处理
+							console.log('apply update info:result:');
+							console.log(result);
+							if(0 == result.data.code){ // 服务器返回处理结果为：已正常处理申请
+								var applyStatus = {'slbh':base_table.$data.slbh, 'status':result.data.list[0]['status'], 'utime':result.data.list[0]['utime'],'bz':result.data.list[0]['bz']};
+								$.ajax({
+									type:'POST',
+									dataType:'json',
+									async : false,
+									url:'{{url "bank/Apply/updateApplyStatus"}}',
+									data: {applyStatus:applyStatus},
+									success:function(result){
+										//console.log('update apply table status:' + result.data.list[0]['errinfo']);
+															//jkr_table.$data.todos.splice(JkrId, 1);
+										console.log('updateApplyStatus success');
+										//if(0 == result.code){
+											layer.alert('申请提交成功！请到 【申请查询】 页面查看受理情况!', function(){
+												window.location.reload();
+											});
+									//	}
+									}
+								});
+							}else{ // 服务器反馈：未成功处理抵押申请信息
+									layer.alert('服务器未成功处理提交请求！请稍后再试!', function(){
+									layer.closeAll('dialog');
+								});
+							}
+						}
+					}
+				});	
+
+			},function(){
+				
+		});
+	
+	}
+  });
+});
+
+
+function selected(selectedData){
+		
+/*	arrList = [
+		{
+			'id':'id',
+			'qzslbh': '权证受理编号(权证唯一主键)001',
+			'bdczh':'20170000688',
+			'bdcdyh':'单元号001',
+			'jzmj':'建筑面积001',
+			'qlr':'qlr',
+			'qlrzjh':'qlrzjh',
+			'zl':'zl',
+			'dyqk':'抵押顺位11',
+			'xzxx':'权利状态(查封,异议)11'
+		}
+	];
+*/// 抵押信息		
+	console.log('searchQz:selectedData');
+	console.log(selectedData);
+	arrList = [];
+	for(var i = 0; i < selectedData.length; i++){
+		arrList.push({
+			'id':i+1,
+			'qzbh':selectedData[i]['qzslbh'],
+			'hbh':selectedData[i]['qzslbh'] + '-' + (i+1),
+			'bdczh':selectedData[i]['bdczh'],
+			'bdcdyh':selectedData[i]['bdcdyh'],
+			'jzmj':selectedData[i]['jzmj'],
+			'qlr':selectedData[i]['qlr'],
+			'zjlx':selectedData[i]['zjlx'],
+			'zjh':selectedData[i]['qlrzjh'],
+			'tel':selectedData[i]['tel'],
+			'zl':selectedData[i]['zl'],
+			'dyqk':selectedData[i]['dyqk'],
+			'xzxx':selectedData[i]['xzxx']
+		});
+	}
+	// 取得选定的记录
+	console.log('searchQz:arrList');
+	console.log(arrList);
+	// 更新父页面
+	parent.updateQz(arrList);
+	var index = parent.layer.getFrameIndex(window.name);
+	parent.layer.close(index);
+}
+
+
+</script>
+
+</body>
+</html>

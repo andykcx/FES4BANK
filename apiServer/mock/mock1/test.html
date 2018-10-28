@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="add()" >add</button>
+    <script src="http://localhost:8009/jquery-1.10.2.js"></script>
+    <script>
+        debugger
+        $.ajax({
+            url: 'http://localhost:8009/students',
+            type: 'get',
+            success: function(msg){
+                alert(msg);
+            }
+        })
+        function add(){
+             $.ajax({
+                url: 'http://localhost:8009/students',
+                type: 'post',
+                data: {
+                    name: '小明胆'
+                },
+                success: function(msg){
+                    alert(msg);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

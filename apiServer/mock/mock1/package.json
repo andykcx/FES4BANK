@@ -1,0 +1,15 @@
+{
+  "name": "mockserver",
+  "version": "1.0.0",
+  "description": "mock json server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sam long",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.14.0",
+    "mockjs": "^1.0.1-beta3"
+  }
+}

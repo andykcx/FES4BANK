@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--360浏览器优先以webkit内核解析-->
+
+
+    <title>H+ 后台主题UI框架 - 主页示例</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="{{assert web/liyang/static/css/bootstrap.min.css?v=3.3.6}}" rel="stylesheet">
+    <link href="{{assert web/liyang/static/css/font-awesome.css?v=4.4.0}}" rel="stylesheet">
+    <link href="{{assert web/liyang/static/css/web/font-awesome.min.css}}" rel="stylesheet">
+    <link href="{{assert web/liyang/static/css/animate.css}}" rel="stylesheet">
+    <link href="{{assert web/liyang/static/css/style.css?v=4.1.0}}" rel="stylesheet">
+    
+
+</head>
+<style>
+    th{background: rgb(247, 246, 246)}
+.bg_th{background: rgb(215, 241, 255)}
+.th-bg{background: rgb(252, 229, 238)}
+a{color: black;}
+i{margin-right: 8px}
+td:hover{background:rgb(246, 247, 247) }
+#time{width: 190px;height: 50px;color: black;font-size: 31px;text-align: center}
+#show{width: 190px;height: 50px;color: rgb(161, 161, 161);font-size: 15px;text-align: center;line-height: 44px}
+.time_td:hover{background: none}
+time_td{width: 220px}
+.wt{margin-bottom: 15px;color: rgb(77, 77, 77);font-size: 16px}
+.tg{background: #dff0d8}
+</style>
+<body class="gray-bg">
+    <div class="row  border-bottom white-bg dashboard-header">
+        <div class="col-sm-3">
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="3"><i class="icon-refresh"></i>快捷入口</th>
+                    
+                </tr>
+                <tr>
+                    <td><a href="javascript:;"><i class=" icon-time" style="color:rgb(58, 236, 236)"></i>待办/处理</a></td>
+                    <td><a href="javascript:;"><i class=" icon-envelope" style="color:rgb(12, 192, 132)"></i>邮件</a></td>
+                </tr>
+                <tr>
+                    <td><a href="javascript:;"><i class="icon-plus-sign" style="color:rgb(31, 230, 203)"></i>用户管理</a></td>
+                    <td><a href="javascript:;"><i class=" icon-bell" style="color:rgb(238, 197, 85)"></i>提醒信息</a></td>
+                </tr>
+                <tr>
+                    <td><a href="javascript:;"><i class=" icon-info-sign" style="color:rgb(188, 124, 248)"></i>申请未通过</a></td>
+                    <td><a href="javascript:;"><i class=" icon-star-empty" style="color:rgb(87, 236, 137)"></i>单据提醒</a></td>
+                </tr>
+                <tr>
+                    <td><a href="javascript:;"><i class=" icon-map-marker" style="color:rgb(226, 19, 70)"></i>地图入口</a></td>
+                    <td><a href="javascript:;"><i class=" icon-book" style="color:rgb(49, 128, 192)"></i>数据查看</a></td>
+                </tr>
+                <tr>
+                    <td><a href="javascript:;"><i class=" icon-picture" style="color:rgb(11, 250, 230)"></i>图片管理</a></td>
+                    <td><a href="javascript:;"><i class=" icon-heart-empty" style="color:rgb(240, 77, 240)"></i>哈哈哈</a></td>
+                </tr>
+              </table>
+        </div>
+        <div class="col-sm-5">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="bg_th"><i class="icon-bullhorn"></i>通知公告</th>
+                </tr>
+                <tr>
+                        <td><a href="javascript:;"><i class="icon-pushpin"></i>【通知公告】岁月不饶人，我亦未曾饶过岁月。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class="icon-pushpin"></i>【通知公告】在孤独中，一个人要像一支队伍。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class="icon-pushpin"></i>【通知公告】你那么有才华，怎么能不受苦呢？</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class="icon-pushpin"></i>【通知公告】平等不是人们相似的产物，而是对个体差异之间愉快的认同。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class="icon-pushpin"></i>【通知公告】好多年了，你一直在我伤口中幽居。我放下过天地，却从未放下过你。</a></td>
+                    </tr>
+
+              </table>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div>
+                    <h5>联系信息</h5>
+
+                </div>
+                <div class="ibox-content">
+                    <p><i class="fa fa-send-o"></i> 地址：<a href="http://www.zi-han.net" target="_blank">甘肃省兰州市七里河区建工中街68号1单元1102室</a>
+                    </p>
+                    <p><i class="fa fa-qq"></i> 联系方式：<a href="http://wpa.qq.com/msgrd?v=3&uin=516477188&site=qq&menu=yes" target="_blank">0931-2604770</a>
+                    </p>
+                    <p><i class="fa fa-weixin"></i>传真：<a href="javascript:;">0931-2604770</a>
+                    </p>
+                    <p><i class="fa fa-credit-card"></i> 邮箱：<a href="javascript:;" class="邮箱信息">541006450@qq.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="wrapper wrapper-content white-bg">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th colspan="2"><i class="icon-time"></i>当前时间</th>
+                    </tr>
+                    <tr>
+                        <td class="time_td">
+                            <div id="time"></div>
+                            <div id="show"></div>
+                        </td>
+                        <td class="time_td">
+                            <div class="wt">上班时间：</div>
+                            <div>上午(08:30 - 12:00)</div>
+                            <div>下午(14:00 - 17:30)</div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th><i class="icon-leaf" style="color:rgb(100, 241, 6)"></i>今日动态</th>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class="icon-fire" style="color:rgb(28, 151, 75)"></i>在酒泉某测绘项目中，北斗测绘有限公司成功中标</a></td>
+                    </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="bg_th"><i class="icon-align-right"></i>我的申请</th>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【我的申请】岁月不饶人，我亦未曾饶过岁月。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【我的申请】在孤独中，一个人要像一支队伍。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【我的申请】你那么有才华，怎么能不受苦呢？</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【我的申请】平等不是人们相似的产物，而是对个体差异之间愉快的认同。</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【我的申请】好多年了，你一直在我伤口中幽居。我放下过天地，却从未放下过你。</a></td>
+                    </tr>
+
+                  </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div>
+                        <h5>更新日志</h5>
+                    </div>
+                    <div class="ibox-content no-padding">
+                        <div class="panel-body">
+                            <div class="panel-group" id="version">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#version" href="#v41">v4.1.0</a><code class="pull-right">2015.12.21</code>
+                                            </h5>
+                                    </div>
+                                    <div id="v41" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="alert alert-warning">此版本是一个维护版本，主要是升级和修复bug，让我们共同期待5.0版的到来</div>
+                                            <ol>
+                                                <li>增加不支持IE8的页面提示</li>
+                                                <li>修复页面链接和表单提交默认在新窗口中打开的问题</li>
+                                                <li>更新suggest插件，修复错位问题</li>
+                                                <li>升级bootstrap版本到3.3.6版本</li>
+                                                <li>升级layer到2.1版本</li>
+                                                <li>升级echarts到2.2.7版本</li>
+                                                <li>升级webuploader到0.1.5版本</li>
+                                                <li>修复网络条件不好情况下，页面加载提示遮挡页面无法操作的问题</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#version" href="#v40">v4.1.0</a><code class="pull-right">2015.10.21</code>
+                                            </h5>
+                                    </div>
+                                    <div id="v40" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>升级bootstrap到最新版本3.3.5；</li>
+                                                <li>升级jquery版本到最新版本2.1.4；</li>
+                                                <li>升级Font Awesome到最新版本4.4.0；</li>
+                                                <li>修复了登录页面的一处错误；</li>
+                                                <li>修复了主页面出现多个滚动条的问题；</li>
+                                                <li>修复了已知的各种浏览器兼容问题；</li>
+                                                <li>修复了layphoto和suggest等页面的显示问题；</li>
+                                                <li>新增Glyphicons字体图标的预览；</li>
+                                                <li>新增对不支持的浏览器的友好提示；</li>
+                                                <li>新增视频/音乐播放器的支持；</li>
+                                                <li>新增Bootstrap Table(推荐)；</li>
+                                                <li>进一步完善了开发文档；</li>
+                                                <li>提供了离线支持，开箱即用；</li>
+                                                <li>对IE系列的浏览器支持更好。</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#version" href="#v32">v3.2.0</a><code class="pull-right">2015.09.22</code>
+                                            </h5>
+                                    </div>
+                                    <div id="v32" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>修复360浏览器个别情况下崩溃的问题；</li>
+                                                <li>优化360浏览器的显示效果；</li>
+                                                <li>修复layim弹出聊天窗口出错的问题；</li>
+                                                <li>优化登录、注册、锁屏页面，使其在右侧主体区域打开时转到新页面打开；</li>
+                                                <li>优化了移动设备的展示效果。</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#version" href="#v31">v3.1.0</a><code class="pull-right">2015.09.18</code>
+                                            </h5>
+                                    </div>
+                                    <div id="v31" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>修复登录页面文本框输入字符不可见的问题；</li>
+                                                <li>修复火狐下conTabs关闭操作按钮不下拉的问题；</li>
+                                                <li>修复IOS系统下各种浏览器右侧内容不滚动的问题；</li>
+                                                <li>优化了主页示例三的显示；</li>
+                                                <li>修复了jqgrid编辑弹框导致页面错位的问题；</li>
+                                                <li>使百度Echarts图标支持响应式，并优化了其显示；</li>
+                                                <li>修复Summernote文本编辑器下拉菜单显示不全的问题；</li>
+                                                <li>修复Toastr通知图标显示多个的问题。</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="th-bg"><i class=" icon-suitcase"></i>公文查阅</th>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>[北斗〔2018〕1号] 北斗团队任命卡尔为测绘侠决定公告</a></td>
+                    </tr>
+            </table>
+            <table class="table table-bordered">
+                <tr>
+                    <th><i class="icon-bookmark-empty"></i>系统日志</th>
+                </tr>
+                <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【pc登录】[admin]用户名登录成功(2018-06-21 15:23:06)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【pc登录】[admin]用户名登录成功(2018-06-19 14:15:43)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【pc登录】[admin]用户名登录成功(2018-06-18 13:22:03)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【pc登录】[admin]用户名登录成功(2018-06-16 09:13:06)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;"><i class=" icon-lemon"></i>【pc登录】[admin]用户名登录成功(2018-06-13 10:13:06)</a></td>
+                    </tr>
+
+              </table>
+              <table class="table table-bordered">
+                <tr>
+                    <th class="tg">关于系统</th>
+                </tr>
+                <tr>
+                    <td class="time_td">
+                        <div class="jies">
+                            软件：北斗</br>
+                            版本：v1.0.1</br>
+                            声明：我们不是开源的，请遵守我们的协议，谢谢！</br>
+                            团队：北斗卫士，很专业的团队！
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="{{assert web/liyang/static/js/jquery.min.js?v=2.1.4}}"></script>
+    <script src="{{assert web/liyang/static/js/bootstrap.min.js?v=3.3.6}}"></script>
+    <script src="{{assert web/liyang/static/js/plugins/layer/layer.min.js}}"></script>
+
+    <!-- 自定义js -->
+    <script src="{{assert web/liyang/static/js/content.js}}"></script>
+</body>
+<script>
+    window.onload=function(){
+    
+    //定时器每秒调用一次fnDate()
+    //setInterval(function(){
+    //fnDate();
+    //},1000);
+    }
+    //js 获取当前时间
+    function fnDate(){
+    var oDiv=document.getElementById("time");
+    var sDiv=document.getElementById("show");
+    var date=new Date();
+    var year=date.getFullYear(); //获取当前年份   
+    var mon=date.getMonth()+1; //获取当前月份   
+    var da=date.getDate(); //获取当前日   
+    var day=date.getDay(); //获取当前星期几
+    var hours=date.getHours();//小时
+    var minute=date.getMinutes();//分
+    var second=date.getSeconds();//秒
+    var time=fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+    var show =year+'年'+mon+'月'+da+'日'+'('+'星期'+day+')'; 
+    oDiv.innerHTML=time;
+    sDiv.innerHTML=show; 
+    }
+    
+    //补位 当某个字段不是两位数时补0
+    function fnW(str){
+    var num;
+    str>=10?num=str:num="0"+str;
+    return num;
+    } 
+    </script>
+</html>

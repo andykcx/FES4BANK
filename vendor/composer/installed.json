@@ -1,0 +1,90 @@
+[
+    {
+        "name": "linhecheng/cmlphp",
+        "version": "dev-dev",
+        "version_normalized": "dev-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/linhecheng/cmlphp.git",
+            "reference": "07fbad16f5166b3c66d3b3751730721f869251bb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/linhecheng/cmlphp/zipball/07fbad16f5166b3c66d3b3751730721f869251bb",
+            "reference": "07fbad16f5166b3c66d3b3751730721f869251bb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "6.*"
+        },
+        "time": "2018-06-01T03:52:39+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cml\\": "src/Cml/",
+                "Cml\\Vendor\\": "src/Vendor/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "linhecheng",
+                "email": "linhechengbush@live.com",
+                "homepage": "http://cmlphp.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "CmlPHP Framework",
+        "homepage": "http://cmlphp.com",
+        "keywords": [
+            "cmlphp"
+        ]
+    },
+    {
+        "name": "linhecheng/cmlphp-ext-blade",
+        "version": "v1.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/linhecheng/cmlphp-ext-blade.git",
+            "reference": "696ccf525a6252cfae36722a097b70236c35ed92"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/linhecheng/cmlphp-ext-blade/zipball/696ccf525a6252cfae36722a097b70236c35ed92",
+            "reference": "696ccf525a6252cfae36722a097b70236c35ed92",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "time": "2016-10-25T08:40:53+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CmlExt\\Blade\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "linhecheng",
+                "email": "linhechengbugh@live.com",
+                "homepage": "http://51beautylife.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "修改自Laravel的模引擎 - Blade"
+    }
+]

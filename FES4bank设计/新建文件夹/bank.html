@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>银行查询</title>
+</head>
+<style>
+        html body { padding: 0px; margin: 0px}
+        .tb {  width: 90%;margin: 30px auto}
+        .row{  width: 90%;margin: 0 auto}
+        .container {width: 90%;margin: 0 auto}
+        input { outline: none;}
+        .T-d {  width: 180px}
+        .t-D {  width: 200px}
+        #bt-div button { margin-top: 5px}
+        span {  padding-left: 68px}
+        #t-p{text-align: center;color: red;font-size: 20px;margin-top:20px;background-color: rgb(236, 236, 236)}
+</style>
+<link rel="stylesheet" href="./layui/css/layui.css">
+<script src="./layui/layui.js"></script>
+
+<body>
+        <div class="row">
+                <form class="layui-form" action="post">
+                        <table class="tb">
+                                <tr>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">产权证号:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="text" name="cq" id="cq" placeholder="" autocomplete="off" class="layui-input">
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">他项证明号:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="text" name="zm" id="zm" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">抵押银行:</label>
+                                                        <div class="layui-input-block">
+                                                                <select name="city" lay-verify="">
+                                                                        <option value="">请选择一个银行</option>
+                                                                        <option value="010">北京</option>
+                                                                        <option value="021">上海</option>
+                                                                        <option value="0571">杭州</option>
+                                                                </select>
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">权利状态:</label>
+                                                        <div class="layui-input-block">
+                                                                <select name="city" lay-verify="">
+                                                                        <option value="">请选择一个选项</option>
+                                                                        <option value="010">北京</option>
+                                                                        <option value="021">上海</option>
+                                                                        <option value="0571">杭州</option>
+                                                                </select>
+                                                        </div>
+
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">查封:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="checkbox" name="" lay-skin="primary" checked>
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">抵押人:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="text" name="dyr" id="dyr" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">证件号码:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="text" name="zj" id="zj" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td>
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">坐落:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="text" name="zl" id="zl" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+
+                                                        </div>
+                                                </div>
+                                        </td>
+                                        <td class="T-d">
+                                                <div class="layui-form-item">
+                                                        <label class="layui-form-label">预抵押:</label>
+                                                        <div class="layui-input-block">
+                                                                <input type="checkbox" name="" lay-skin="primary" checked>
+                                                        </div>
+                                                </div>
+
+                                        </td>
+                                        <td class="t-D">
+                                                <div class="layui-form-item" id="bt-div">
+                                                        <button type="button" class="layui-btn layui-btn-normal" id="btn">
+                                                                <i class="layui-icon">&#xe615;</i> 搜索</button>
+                                                        <button type="button" class="layui-btn layui-btn-normal">
+                                                                <i class="layui-icon">&#xe60a;</i> 导出</button>
+                                                </div>
+                                        </td>
+                                </tr>
+
+                        </table>
+                </form>
+
+        </div>
+
+        <div class="container" style="display:none" id="cont-div">
+                <hr>
+                <span>新增二次抵押 0 条</span>
+                <span>新增查封 0 条</span>
+                <table class="layui-table">
+                        <colgroup>
+                                <col width="150">
+                                <col width="200">
+                                <col>
+                        </colgroup>
+                        <thead>
+                                <tr>
+                                        <th></th>
+                                        <th>不动产证期号</th>
+                                        <th>权利人</th>
+                                        <th>义务人</th>
+                                        <th>抵押开始时间</th>
+                                        <th>抵押结束时间</th>
+                                        <th>抵押金额(万元)</th>
+                                        <th>坐落</th>
+                                        <th>权利状</th>
+                                        <th>操作</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                </tr>
+                                <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                </tr>
+                        </tbody>
+                </table>
+                <div id="demo7"></div>
+        </div>
+
+
+</body>
+<script src="./static/js/jquery-3.3.1.min.js"></script>
+<script src="./static/js/bank.js"></script>
+<script>
+        //Demo
+        layui.use('form', function () {
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function (data) {
+                        layer.msg(JSON.stringify(data.field));
+                        return false;
+                });
+        });
+</script>
+<script>
+        layui.use(['laypage', 'layer'], function () {
+                var laypage = layui.laypage,
+                        layer = layui.layer;
+                //完整功能
+                laypage.render({
+                        elem: 'demo7',
+                        count: 100,
+                        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                        jump: function (obj) {
+                                console.log(obj)
+                        }
+                });
+
+
+                //调用分页
+                laypage.render({
+                        elem: 'demo20',
+                        count: data.length,
+                        jump: function (obj) {
+                                //模拟渲染
+                                document.getElementById('biuuu_city_list').innerHTML =
+                                        function () {
+                                                var arr = [],
+                                                        thisData = data.concat()
+                                                        .splice(obj.curr * obj.limit -
+                                                                obj.limit, obj.limit
+                                                        );
+                                                layui.each(thisData, function (
+                                                        index,
+                                                        item) {
+                                                        arr.push(
+                                                                '<li>' +
+                                                                item +
+                                                                '</li>'
+                                                        );
+                                                });
+                                                return arr.join('');
+                                        }();
+                        }
+                });
+
+        });
+</script>
+
+</html>

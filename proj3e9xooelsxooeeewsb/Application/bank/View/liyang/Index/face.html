@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>人脸认证</title>
+<link rel="stylesheet" href="{{assert bank/liyang/plugins/layui/css/layui.css}}">
+<script src="{{assert bank/liyang/plugins/layui/layui.js}}"></script>
+</head>
+
+<body>
+    <div id="webcam"></div>   
+	<div id="canvas"></div>   
+	<div class="layui-block">
+		<div class="layui-inline">
+       		<label id="status"></label>
+		</div>
+		<div class="layui-inline">
+			<button class="layui-btn layui-btn-sm layui-hide" id="play">开始验证身份</button>
+		</div>
+    </div>
+	<div id="cams"></div>
+
+</body>
+
+<script src="{{assert bank/liyang/plugins/jquery-2.2.3.min.js}}"></script>
+<script src="{{assert bank/liyang/plugins/jQueryWebcam/jquery.webcam.min.js}}"></script>
+<script>
+$(document).ready(function() {
+	var pos = 0, ctx = null, saveCB, image = [];
+	var beginImg, changedImg = null;// 
+	var imageData = null;// 
+	var type = '';// action type
+	
+	var canvas = document.createElement("canvas");
+	canvas.setAttribute('width', 320);
+	canvas.setAttribute('height', 240);
+	//如果画布成功创建
+	if (canvas.toDataURL) {
+		//设置画布为2d，未来可能支持3d
+		ctx = canvas.getContext("2d");
+		//截图320*240，即整个画布作为有效区(cutx?)
+		image = ctx.getImageData(0, 0, 320, 240);
+		
+		saveCB = function(data) {
+                //把data切割为数组
+                var col = data.split(";");
+                var img = image;
+                //绘制图像(这里不是很理解算法)
+                //参数data  只是每行的数据  ，例如320*240 大小的照片，一张完整的照片下来需要240个data，每个data有320个rgb
+                for (var i = 0; i < 320; i++) {
+                    //转换为十进制
+                    var tmp = parseInt(col[i]);
+                    img.data[pos + 0] = (tmp >> 16) & 0xff;
+                    img.data[pos + 1] = (tmp >> 8) & 0xff;
+                    img.data[pos + 2] = tmp & 0xff;
+                    img.data[pos + 3] = 0xff;
+                    pos += 4;
+                }
+                //当绘制320*240像素的图片时发给后端php
+                if (pos >= 4 * 320 * 240) {
+                    //把图像放到画布上,输出为png格式
+                    ctx.putImageData(img, 0, 0);
+				pos = 0;
+				imageData = canvas.toDataURL().substring(22);  //上传给后台的图片数据
+			}
+			return imageData;
+		};
+
+	} else {
+
+	/*	saveCB = function(data) {
+			image.push(data);
+			
+			pos+= 4 * 320;
+			
+			if (pos >= 4 * 320 * 240) {
+				$.post("/upload.php", {type: "pixel", image: image.join('|')});
+				pos = 0;
+			}
+		};
+	*/
+	}
+
+	        //                /**
+        //                 * 获取canvas画布的内容 getImageData
+        //                 * 内容放回到canvas画布 putImageData
+        //                 * 获取ImgData的每一个像素 ImgData.data
+        //                 * getImageData(起始点的横坐标, 起始点的纵坐标, 获取的宽度, 获取的高度)
+        //                 * putImageData(绘制点的横坐标, 绘制点点纵坐标, imgData的起始点横坐标, imgData的起始点纵坐标, 宽度, 高度)
+        //                 */
+    $("#webcam").webcam({
+        width: 320,
+        height: 240,
+        mode: "callback",                       //stream,save，回调模式,流模式和保存模式
+        swffile: "{{assert bank/liyang/plugins/jQueryWebcam/jscam_canvas_only.swf}}",
+        onTick: function(remain) { 
+            if (0 == remain) {
+                $("#status").text("人脸信息提取成功!");
+            } else {
+                $("#status").text("倒计时"+remain + "秒钟...");
+            }
+        },
+     /*   onSave: function(data){              //保存图像
+			//changedImg = saveCB();
+			console.log('onSave:changedImg:');
+			console.log(changedImg);
+			if( true == isFaceChanged(beginImg, changedImg)){
+				// send img to server for detect face.
+				$.ajax({
+					type:'post',
+					url:'{{url "bank/Index/detectFace"}}',
+					data:{imageData:imageData, type:type},
+					dataType : "json",
+					success:function(result){
+						console.log(result);
+						if(0 == result.code){
+							// 
+							$("#status").text("验证成功!欢迎登录!");
+							$('#play').attr('class', 'layui-btn layui-btn-sm layui-hide');
+							window.setTimeout(function(){
+								window.location.href='{{url "bank/Index/index"}}';
+							},3000);
+							
+						}else if(-1 == result.code){
+							// 
+							$("#status").text("验证失败!请先注册!");
+							$("#status").text("验证失败!请先注册!(===========================演示系统允许不注册通过验证================================");
+							$('#play').attr('class', 'layui-btn layui-btn-sm layui-hide');
+							window.setTimeout(function(){
+								window.location.href='{{url "bank/Index/index"}}';
+								window.location.href='{{url "bank/Index/login"}}';
+							},7000);
+						}
+					},
+					error : function(msg) {
+						alert("请把脸放好了");
+					}
+				});
+			}else{
+				$('#status').text('人脸活动信息提取失败!请点击【开始验证身份】重新开始!');
+			}
+			
+        }, */
+		onSave:function(){
+			switch(type){
+				case 'mouse':
+					//mouse_yanzheng();
+					console.log('call mouse_yanzheng()...');
+				case 'eye':
+					//eye_yanzheng();
+					console.log('call eye_yanzheng()...');
+			}
+		},
+        onCapture: function () {               //捕获图像
+			//beginImg = saveCB();
+			console.log('onCapture:beginImg:');
+			console.log(beginImg);
+            webcam.save();      
+        },
+        debug: function (type, string) {       //控制台信息
+            console.log(type + ": " + string);
+        },
+        onLoad: function() {                   //flash 加载完毕执行
+            console.log('加载完毕！')
+            $('#status').text('请确保面部清晰可见');
+			$('#play').attr('class', 'layui-btn layui-btn-sm');
+			
+			// 选择摄像头
+            var cams = webcam.getCameraList();
+            //点击摄像头名称，将自动切换到该摄像头，核心代码：onclick="webcam.setCamera(i),其中i为摄像头序号
+			for(var i in cams) {
+				jQuery("#cams").append('<a onclick="setCamera(' + i + ');">' + cams[i] + '</a>');
+			}
+
+			
+        }
+    });  
+	
+});
+	
+	function isFaceChanged(beginImg, img2){
+		return false;
+	}
+	function setCamera(id){
+		webcam.setCamera(id);
+	}
+	
+	   //进行验证  
+    function CatchCode() {
+        //实际运用可不写，测试代 ， 为单击拍照按钮就获取了当前图像，有其他用途
+        var canvans = document.getElementById("canvas");
+        var webcam = document.getElementById("webcam");
+        var context = canvas.getContext("2d");
+
+        canvas.width = webcam.webcamWidth;
+        canvas.height = webcam.webcamHeight;
+        context.drawImage(webcam, 0, 0);
+
+        var imgData = canvans.toDataURL();
+        //获取图像在前端截取22位以后的字符串作为图像数据
+        var imgData1 = imgData.substring(22);
+        var data = {
+            'img' : imgData1
+        };
+        var dataInfo = $.parseJSON(data);
+        $.ajax({
+            type : "post",
+            url : "faceServlet",
+            data : {
+                "img" : imgData1,
+                "tag" : "mouse"
+            },
+            dataType : "json",
+            success : function(data) {
+                if (data == '1') {
+                    console.log('张张嘴验证成功');
+                    //清除定时器
+                    window.clearInterval(interval);
+                    voice_eye();
+                    setTimeout("eye_yanzheng()",2000);   //延迟2秒后执行
+                } else {
+                    console.log('张张嘴验证失败');
+                }
+            },
+            error : function(msg) {
+                alert("请把脸放好了");
+            }
+        });
+    }
+	
+	//验证动动嘴
+    function mouse_yanzheng() {
+        //实际运用可不写，测试代 ， 为单击拍照按钮就获取了当前图像，有其他用途
+        var canvans = document.getElementById("canvas");
+        var webcam = document.getElementById("webcam");
+        var context = canvas.getContext("2d");
+        canvas.width = webcam.webcamWidth;
+        canvas.height = webcam.webcamHeight;
+        context.drawImage(webcam, 0, 0);
+
+        var imgData = canvans.toDataURL();
+        //获取图像在前端截取22位以后的字符串作为图像数据
+        var imgData1 = imgData.substring(22);
+        var data = {
+            'img' : imgData1
+        };
+        var dataInfo = $.parseJSON(data);
+        $.ajax({
+            type : "post",
+            url : '{{url "bank/Index/detectFace"}}',
+            data : {
+                "img" : imgData1,
+                "type" : "mouse"
+            },
+            dataType : "json",
+            success : function(data) {
+                if (data == '1') {
+                    console.log('眨眨眼验证成功');
+                    location.href = '{{url "bank/Index/index"}}';
+                } else {
+                    console.log('眨眨眼验证失败');
+                    dingshiqi_mouse();
+                }
+            },
+            error : function(msg) {
+            }
+        });
+    }
+    //动动嘴的定时器
+    function dingshiqi_mouse() {
+        //执行定时器
+        var time = 500;
+        //执行人脸判断
+        interval = setInterval(mouse_yanzheng(), time);
+    }
+	
+    //验证眨眨眼
+    function eye_yanzheng() {
+        //实际运用可不写，测试代 ， 为单击拍照按钮就获取了当前图像，有其他用途
+        var canvans = document.getElementById("canvas");
+        var webcam = document.getElementById("webcam");
+        var context = canvas.getContext("2d");
+        canvas.width = webcam.webcamWidth;
+        canvas.height = webcam.webcamHeight;
+        context.drawImage(webcam, 0, 0);
+
+        var imgData = canvans.toDataURL();
+        //获取图像在前端截取22位以后的字符串作为图像数据
+        var imgData1 = imgData.substring(22);
+        var data = {
+            'img' : imgData1
+        };
+        var dataInfo = $.parseJSON(data);
+        $.ajax({
+            type : "post",
+            url : '{{url "bank/Index/detectFace"}}',
+            data : {
+                "img" : imgData1,
+                "type" : "eye"
+            },
+            dataType : "json",
+            success : function(data) {
+                if (data == '1') {
+                    console.log('眨眨眼验证成功');
+                    location.href = '{{url "bank/Index/index"}}';
+                } else {
+                    console.log('眨眨眼验证失败');
+                    dingshiqi_eye();
+                }
+            },
+            error : function(msg) {
+            }
+        });
+    }
+    //眨眨眼的定时器
+    function dingshiqi_eye() {
+        //执行定时器
+        var time = 500;
+        //执行人脸判断
+        interval = setInterval(eye_yanzheng(), time);
+    }
+
+    $("#play").click(function(){
+		//随机产生 '动作'
+		type = Math.round(Math.random()); // 随机产生 0 1 
+        webcam.capture(1);        //参数1是倒计时
+    });
+
+</script>
+</html>

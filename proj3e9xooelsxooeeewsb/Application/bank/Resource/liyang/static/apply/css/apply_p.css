@@ -1,0 +1,7 @@
+.container {width: 90%;margin: 0 auto;border: 1.5px rgb(236, 236, 236) solid;overflow: hidden}
+.container p{text-align: center;color: rgb(32, 32, 32);font-size: 20px;margin-top:20px;background-color: rgb(236, 236, 236);width: 100%;height: 30px;overflow: hidden}
+.t-b{background-color: rgb(240, 240, 240);text-align: center;font-size: 20px;width: 100px}
+.layui-input{border: none}
+span{color: red}
+.btn{float: right;overflow: hidden;padding-top: 10px;overflow: hidden}
+.btn button{margin-right: 10px;}

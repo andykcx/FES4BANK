@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>抵押人添加</title>
+</head>
+<style>
+</style>
+<link rel="stylesheet" href="{{assert bank/liyang/static/apply/css/apply.css}}">
+<link rel="stylesheet" href="{{assert bank/liyang/plugins/layui/css/layui.css}}">
+<script src="{{assert bank/liyang/plugins/layui/layui.js}}"></script>
+
+<body>
+        <div class="container">
+                <p>添加权利人信息</p>
+                <form class="layui-form" action="post">
+                        <table class="layui-table">
+                                <tr>
+                                        <td class="t-b" width='200px'>权利人名称<span>*</span></td>
+                                        <td width='500px'><input type="text" name="qlr" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td  class="t-b" width='200px'>民族</td>
+                                        <td width='500px'><input type="text" name="nation" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >性别<span>*</span></td>
+                                        <td><input type="text" name="sex" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >国家地区</td>
+                                        <td>中华人民共和国</td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >证件类别<span>*</span></td>
+                                        <td><input type="text" name="genre" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >证件号<span>*</span></td>
+                                        <td><input type="text" name="card" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >户籍所在省市</td>
+                                        <td><input type="text" name="hj" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >发证机关</td>
+                                        <td><input type="text" name="fz" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >工作单位</td>
+                                        <td><input type="text" name="dw" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >所属行业</td>
+                                        <td><input type="text" name="hy" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >地址</td>
+                                        <td colspan="3"><input type="text" name="address" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >电话<span>*</span></td>
+                                        <td><input type="text" name="phone" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >电子邮件</td>
+                                        <td><input type="text" name="emile" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >邮编</td>
+                                        <td><input type="text" name="yb" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        <td class="t-b" >家庭人数</td>
+                                        <td><input type="text" name="family" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                </tr>
+                                <tr>
+                                        <td class="t-b" >备注</td>
+                                        <td colspan='3'><input type="text" name="bz" id="" lay-verify="" placeholder="" autocomplete="off" class="layui-input"></td>
+                                        
+                                </tr>
+
+                        </table>
+                        <div class="btn">
+                                <button type="button" class="layui-btn ">保存</button><button type="button" class="layui-btn layui-btn-primary" onclick="javascript:history.back(-1);">关闭</button>
+                        </div>
+                </form>
+        </div>
+</body>
+
+</html>

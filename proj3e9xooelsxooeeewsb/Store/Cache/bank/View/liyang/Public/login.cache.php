@@ -1,0 +1,64 @@
+<?php if (!class_exists('\Cml\View')) die('Access Denied');?><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>登录</title>
+    <link href="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/static/css/bootstrap.min.css");?>" rel="stylesheet">
+	
+    <link href="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/static/css/login.css");?>" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
+</head>
+<style>
+    .m-t-md{padding-left: 50px;font-size: 30px} 
+    strong{padding-left: 50px;margin-top: 10px}
+    .sname{padding-left:90px;color: rgb(165, 165, 165)}
+</style>
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                   
+                   
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <form class="login">    
+					<p class="m-t-md">欢迎登录</p>
+				<input type="text" class="form-control uname" placeholder="<?php echo ($showField && isset($showField['username'])) ? $showField['username'] : '请输入用户名';?>" autofocus name="username"/>
+				<input type="password" class="form-control pword m-b"  placeholder="Password" name="password" />
+				<img src="<?php \Cml\Http\Response::url('cml_calc_veryfy_code');?>" width="138" height="36" class="code">
+				<input type="text" name="code" autocomplete="off" class="form-control code" />
+				<button class="btn btn-success btn-block" type="submit">登录</button>
+				<span class="sname">FES4Bank前置系统</span>
+				<span class="sname" id="message"></span>
+                </form>
+               
+            </div>
+			<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/plugins/layui/layui.js");?>"></script>
+			<script>
+				layui.config({
+					base: '<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/build/js/");?>'
+				});
+			</script>
+
+			<script src="<?php echo \Cml\Tools\StaticResource::parseResourceUrl("bank/liyang/js/login.js");?>"></script>
+			<script>
+				var login_url = "<?php \Cml\Http\Response::url('bank/Public/checkLogin');?>", jump_url = "<?php \Cml\Http\Response::url('bank/Index/index');?>", veri_code_url="<?php \Cml\Http\Response::url('cml_calc_veryfy_code');?>";
+			</script>
+        </div>
+    </div>
+</body>
+
+</html>
